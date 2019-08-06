@@ -53,7 +53,8 @@ $(function () {
       'distance': distance,
       'clicks': clicks,
       'right_clicks': rightClicks,
-      'completed': completed
+      'completed': completed,
+      'user_agents': navigator.userAgent,
     }, function (output) {
       console.log(output);
     });
