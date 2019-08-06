@@ -70,6 +70,7 @@ $(function () {
       'right_clicks': rightClicks,
       'completed': completed,
       'user_agent': navigator.userAgent,
+      'hostname': window.location.hostname
     }, function () {
       console.log('Data Posted');
     });
