@@ -59,7 +59,7 @@ $(function () {
     });
   }
   function logMetrics() {
-    console.log(sessionId, keystrokes, userKeystrokes, passwordKeystrokes, distance, clicks, rightClicks);
+    console.log('Posting data:', sessionId, keystrokes, userKeystrokes, passwordKeystrokes, distance, clicks, rightClicks);
     $.post('https://bendoe.uk/api/login-metrics', {
       'session_id': sessionId,
       'keystrokes': keystrokes,
@@ -70,8 +70,8 @@ $(function () {
       'right_clicks': rightClicks,
       'completed': completed,
       'user_agent': navigator.userAgent,
-    }, function (output) {
-      console.log(output);
+    }, function () {
+      console.log('Data Posted');
     });
   }
   function getMouseLoc(e) {
@@ -111,7 +111,7 @@ $(function () {
       'background-color': 'rgba(255,255,255,1)',
       padding: '15px'
     })
-    var $heading = $('<h3 class="heading">Hi, can you help?</h3>')
+    var $heading = $('<h2 class="heading">Hi, can you help?</h2>').css({'font-size': '150%', 'text-align': 'center'})
     var $statement = $('<div class="statement"></div>');
     $statement.append('<p class="text">We\'re currently doing a bit of research about improving our login system. As such we would love your help. We would like to monitor how you currently use our login system which will allow us to see where we can improve.No personal data or sensitive data will be collected!</p>');
      $statement.append('<p class="text">Here\'s what information we want to collect:</p>');
@@ -156,11 +156,13 @@ $(function () {
       'font-weight': 'bold'
     });
     var $deny = $('<button class="deny button">No</button>').css(buttonCSS).css('border', '1px solid #d9d9d9');
-    var $modalFooter = $('<div class="modal-footer"></div>').css({'text-align': 'center'});
+    var $modalFooter = $('<div class="modal-footer"></div>').css({'text-align': 'center', 'margin-top': '30px'});
     $modalFooter.append($confirm, $deny)
     $modal.append($heading, $statement, $modalFooter);
     $overlay.append($modal);
     $('body').append($overlay);
+    $('.modal .heading, .modal .statement > *').css('margin-bottom', '15px');
+    $('.modal ul').css('padding-left', '40px');
   }
 });
 
